@@ -1,8 +1,8 @@
-import { Observable, Subscriber, Subscription } from "rxjs";
+import { MonoTypeOperatorFunction, Observable, Subscriber, Subscription } from "rxjs";
 
 export type ActionCallback = () => void;
 
-export function executeBefore(action: ActionCallback) {
+export function executeBefore<T>(action: ActionCallback): MonoTypeOperatorFunction<T> {
   return <T>(source: Observable<T>) => {
     return new Observable<T>((observer: Subscriber<T>): Subscription => {
       action();
