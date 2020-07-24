@@ -3,10 +3,11 @@ import { MonoTypeOperatorFunction, Observable, Subscriber, Subscription } from "
 export type ActionCallback = () => void;
 
 export function executeBefore<T>(action: ActionCallback): MonoTypeOperatorFunction<T> {
-  return <T>(source: Observable<T>) => {
-    return new Observable<T>((observer: Subscriber<T>): Subscription => {
-      action();
-      return source.subscribe(observer);
-    });
-  };
+  return (source: Observable<T>) =>
+    new Observable<T>(
+      (observer: Subscriber<T>): Subscription => {
+        action();
+        return source.subscribe(observer);
+      }
+    );
 }
