@@ -1,6 +1,6 @@
 {
   "name": "rxjs-execute-before-operator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "rxjs execute before operator",
   "main": "index.js",
   "scripts": {
